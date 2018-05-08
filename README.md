@@ -2,7 +2,7 @@
 
 ## User Stories and Domain Models
 
-1. As a person
+1. As a person,
 So that I can see my bookmarks
 I'd like to see a list of bookmarks on my homepage.
 

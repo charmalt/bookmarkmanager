@@ -11,6 +11,8 @@ class Bookmark
     rs.map { |row| row['url'] }
   end
 
+  private
+
   def self.add(bookmark)
     if ENV['ENVIRONMENT'] == 'test'
       con = PG.connect :dbname => 'bookmark_manager_test'

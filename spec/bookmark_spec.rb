@@ -3,9 +3,8 @@ require 'bookmark'
 describe Bookmark do
   describe'.all' do
     it 'returns all bookmarks' do
-      con = PG.connect(dbname: 'bookmark_manager_test')
-      con.exec("INSERT INTO bookmarks (url) VALUES ('http://makersacademy.com');")
-      con.exec("INSERT INTO bookmarks (url) VALUES ('http://google.com');")
+      Bookmark.add('http://makersacademy.com')
+      Bookmark.add('http://google.com')
 
       expected_bookmarks = [
         'http://makersacademy.com',

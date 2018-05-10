@@ -1,5 +1,5 @@
 feature 'Add bookmarks' do
-  xscenario 'A user can add bookmarks' do
+  scenario 'A user can add bookmarks' do
     visit '/bookmarks'
     fill_in 'bookmark', with: 'http://facebook.com'
     click_on 'submit'

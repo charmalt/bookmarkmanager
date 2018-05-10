@@ -9,7 +9,7 @@ class BookmarkManager < Sinatra::Base
   enable :sessions
 
   get '/bookmarks' do
-    @bookmarks = Bookmark.all.join("<br>")
+    p @bookmarks = Bookmark.all.join("<br>")
     erb :bookmarks
   end
 

@@ -25,11 +25,11 @@ describe Bookmark do
     end
   end
 
-  xdescribe '.add' do
+  describe '.add' do
     it 'add a bookmark to the list' do
       new_bookmark = 'http://asos.com'
       Bookmark.add('http://asos.com')
-      expect(Bookmark.all).to include new_bookmark
+      expect(Bookmark.all.last.url).to eq new_bookmark
     end
   end
 

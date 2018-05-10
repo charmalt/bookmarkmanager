@@ -1,12 +1,12 @@
 feature 'Add bookmarks' do
-  scenario 'A user can add bookmarks' do
+  xscenario 'A user can add bookmarks' do
     visit '/bookmarks'
     fill_in 'bookmark', with: 'http://facebook.com'
     click_on 'submit'
     expect(page).to have_content 'http://facebook.com'
   end
 
-  scenario 'displays error if invalid url is submitted' do
+  xscenario 'displays error if invalid url is submitted' do
     visit '/bookmarks'
     fill_in 'bookmark', with: 'ddddd'
     click_on 'submit'

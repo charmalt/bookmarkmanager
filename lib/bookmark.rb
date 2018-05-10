@@ -16,7 +16,7 @@ class Bookmark
       con = PG.connect :dbname => 'bookmark_manager'
     end
     rs = con.exec 'SELECT * FROM bookmarks';
-    rs.map { |row| row['url'] }
+  p  rs.map { |row| Bookmark.new(row['id'],row['url']) }
   end
 
   def self.add(bookmark)

@@ -6,6 +6,8 @@ feature 'Delete bookmarks' do
   end
 
   scenario 'can delete a bookmark from database' do
+    visit '/bookmarks'
+    expect(page).to have_content "http://makersacademy.com"
     visit '/'
     click_on 'Delete'
     check("0")

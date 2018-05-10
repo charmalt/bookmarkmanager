@@ -9,7 +9,7 @@ feature 'Add' do
 
   scenario 'Display error if invalid url' do
     add_invalid_url
-    expect(page).to have_content 'please enter a valid url'
+    expect(page).to have_content 'Invalid url'
     view_bookmarks
     expect(page).not_to have_content 'ddddd'
   end

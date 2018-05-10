@@ -3,6 +3,7 @@ require 'bookmark'
 describe Bookmark do
 
   let(:url) { "http://airbnb.com" }
+  let(:invalid_url) { "http:||airbnb.com" }
   let(:id) { 1 }
   let(:title) {"Airbnb"}
 
@@ -46,6 +47,15 @@ describe Bookmark do
     it 'deletes a bookmark from the list' do
       expect(database).to receive(:delete)
       Bookmark.delete(title)
+    end
+  end
+
+  describe '.valid_url?' do
+    it 'returns true if url is valid' do
+      expect(Bookmark.valid_url?(url)).to be true
+    end
+    it 'returns false if url is valid' do
+      expect(Bookmark.valid_url?(invalid_url)).to be false
     end
   end
 

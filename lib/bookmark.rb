@@ -33,4 +33,8 @@ class Bookmark
     self.database.delete(title)
   end
 
+  def self.valid_url?(url)
+    !!(url =~ /\A#{URI::regexp(['http', 'https'])}\z/)
+  end
+
 end

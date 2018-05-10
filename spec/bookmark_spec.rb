@@ -35,4 +35,10 @@ describe Bookmark do
     end
   end
 
+  # describe '.delete' do
+  #   it 'deletes a bookmark from the list' do
+  #
+  #   end
+  # end
+
 end

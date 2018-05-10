@@ -8,6 +8,10 @@ class BookmarkManager < Sinatra::Base
   register Sinatra::Flash
   enable :sessions
 
+  get '/' do
+    erb :index
+  end
+
   get '/bookmarks' do
     @bookmarks = Bookmark.all
     erb :bookmarks
@@ -20,6 +24,10 @@ class BookmarkManager < Sinatra::Base
       flash[:error] = 'please enter a valid url'
     end
     redirect '/bookmarks'
+  end
+
+  get '/delete' do
+    erb :delete
   end
 
   run! if app_file == $0

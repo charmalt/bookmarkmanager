@@ -1,9 +1,9 @@
 feature 'View bookmarks' do
   scenario 'A user can see bookmarks' do
     con = PG.connect(dbname: 'bookmark_manager_test')
-    Bookmark.add('http://makersacademy.com')
-    Bookmark.add('http://destroyallsoftware.com')
-    Bookmark.add('http://google.com')
+    Bookmark.add('http://makersacademy.com', 'Makers Academy')
+    Bookmark.add('http://destroyallsoftware.com', 'Destroy All Software')
+    Bookmark.add('http://google.com', 'Google')
 
     visit '/bookmarks'
 

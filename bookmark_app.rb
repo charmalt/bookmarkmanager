@@ -15,7 +15,7 @@ class BookmarkManager < Sinatra::Base
 
   post '/bookmarks' do
     if params[:bookmark] =~ /\A#{URI::regexp(['http', 'https'])}\z/
-      Bookmark.add(params[:bookmark])
+      Bookmark.add(params[:bookmark], params[:title])
     else
       flash[:error] = 'please enter a valid url'
     end

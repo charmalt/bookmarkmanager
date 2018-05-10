@@ -3,7 +3,7 @@ feature 'Add bookmarks' do
     visit '/bookmarks'
     fill_in 'bookmark', with: 'http://facebook.com'
     fill_in 'title', with: 'Facebook'
-    click_on 'submit'
+    click_on 'Submit'
     expect(page).to have_content 'http://facebook.com'
     expect(page).to have_content 'Facebook'
   end
@@ -11,7 +11,7 @@ feature 'Add bookmarks' do
   scenario 'displays error if invalid url is submitted' do
     visit '/bookmarks'
     fill_in 'bookmark', with: 'ddddd'
-    click_on 'submit'
+    click_on 'Submit'
     expect(page).not_to have_content 'ddddd'
     expect(page).to have_content 'please enter a valid url'
   end

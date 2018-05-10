@@ -1,5 +1,5 @@
 feature 'View bookmarks' do
-  xscenario 'A user can see bookmarks' do
+  scenario 'A user can see bookmarks' do
     con = PG.connect(dbname: 'bookmark_manager_test')
     Bookmark.add('http://makersacademy.com')
     Bookmark.add('http://destroyallsoftware.com')

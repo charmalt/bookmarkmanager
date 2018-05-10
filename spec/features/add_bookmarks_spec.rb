@@ -6,7 +6,7 @@ feature 'Add bookmarks' do
     expect(page).to have_content 'http://facebook.com'
   end
 
-  xscenario 'displays error if invalid url is submitted' do
+  scenario 'displays error if invalid url is submitted' do
     visit '/bookmarks'
     fill_in 'bookmark', with: 'ddddd'
     click_on 'submit'

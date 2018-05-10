@@ -22,4 +22,12 @@ class Database
     rs.map { |row| [row['id'],row['url'], row['title']] }
   end
 
+  def self.delete(title)
+    self.con.exec "DELETE FROM bookmarks WHERE title='#{title}'";
+  end
+
+  def self.truncate
+    self.con.exec "TRUNCATE bookmarks;"
+  end
+
 end

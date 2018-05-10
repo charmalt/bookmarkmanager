@@ -1,9 +1,4 @@
-<body><%= styled_flash %>
-<form action="/bookmarks" method = "post">
-  URL <input type="text" name="bookmark">
-  TITLE <input type="text" name="title">
-  <input type="submit" value="Submit">
-</form>
+<body>
 
 <% @bookmarks.each do |bookmark_instance| %>
    <%= bookmark_instance.title %> :

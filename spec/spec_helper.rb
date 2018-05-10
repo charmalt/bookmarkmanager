@@ -5,6 +5,7 @@ require File.join(File.dirname(__FILE__), '..', 'bookmark_app.rb')
 require 'capybara'
 require 'capybara/rspec'
 require 'rspec'
+require 'pg'
 
 Capybara.app = BookmarkManager
 
@@ -29,7 +30,8 @@ RSpec.configure do |config|
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
   config.before(:each)do
-    require_relative './setup_test_database'
+    con = PG.connect(dbname: 'bookmark_manager_test')
+    con.exec("TRUNCATE bookmarks;")
   end
 
 

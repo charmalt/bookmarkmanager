@@ -1,5 +1,5 @@
 require 'pg'
-require 'database'
+require './lib/database'
 
 class Bookmark
 
@@ -11,21 +11,26 @@ class Bookmark
     @title = title
   end
 
+  def self.connect(database = Database)
+    database.connect
+    @database = database
+  end
+
+  def self.database
+    @database
+  end
+
   def self.all
-    con = Database.connect
-    rs = con.exec 'SELECT * FROM bookmarks';
-    rs.map { |row| Bookmark.new(row['id'],row['url'], row['title']) }
+    rs = self.database.all
+    rs.map { |row| Bookmark.new(row[0], row[1], row[2]) }
   end
 
   def self.add(url, title)
-    con = Database.connect
-    con.exec "INSERT INTO bookmarks (url, title)
-    VALUES ('#{url}', '#{title}')";
+    self.database.add(url, title)
   end
 
   def self.delete(title)
-    con = Database.connect
-    con.exec "DELETE FROM bookmarks
-    WHERE title='#{title}'";
+    self.database.delete(title)
   end
+
 end

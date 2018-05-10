@@ -22,7 +22,7 @@ describe Bookmark do
     end
 
     it 'should return an array' do
-      Bookmark.add('http://google.com', 'Makers Academy')
+      Bookmark.add('http://google.com', 'Google')
       expect(Bookmark.all).to be_instance_of(Array)
     end
   end
@@ -35,10 +35,14 @@ describe Bookmark do
     end
   end
 
-  # describe '.delete' do
-  #   it 'deletes a bookmark from the list' do
-  #
-  #   end
-  # end
+  describe '.delete' do
+    it 'deletes a bookmark from the list' do
+      Bookmark.add('http://bbc.co.uk','BBC')
+      Bookmark.add('http://asos.com','Asos')
+      bookmark_to_delete = "http://asos.com"
+      Bookmark.delete('Asos')
+      expect(Bookmark.all.last.url).not_to eq bookmark_to_delete
+    end
+  end
 
 end

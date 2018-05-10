@@ -1,1 +1,12 @@
 "Please select the bookmark you want to delete."
+<br>
+
+<form>
+<% @bookmarks.each_with_index do |bookmark_instance, index| %>
+   <%= bookmark_instance.title %> :
+   <a href="<%= bookmark_instance.url %>">
+   <%= bookmark_instance.url %></a>
+   <input type ="checkbox" name = "bookmark" value = "<%= bookmark_instance.title %>" id = "<%= index %>" ><br>
+ <% end %>
+<input type="submit" value="Delete">
+</form>

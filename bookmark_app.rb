@@ -27,7 +27,12 @@ class BookmarkManager < Sinatra::Base
   end
 
   get '/delete' do
+    @bookmarks = Bookmark.all
     erb :delete
+  end
+
+  post '/delete' do
+    Bookmark.delete(params[:bookmark])
   end
 
   run! if app_file == $0

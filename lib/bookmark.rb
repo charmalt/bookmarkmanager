@@ -1,4 +1,5 @@
 require 'pg'
+require 'database'
 
 class Bookmark
 
@@ -11,31 +12,19 @@ class Bookmark
   end
 
   def self.all
-    if ENV['ENVIRONMENT'] == 'test'
-      con = PG.connect :dbname => 'bookmark_manager_test'
-    else
-      con = PG.connect :dbname => 'bookmark_manager'
-    end
+    con = Database.connect
     rs = con.exec 'SELECT * FROM bookmarks';
     rs.map { |row| Bookmark.new(row['id'],row['url'], row['title']) }
   end
 
   def self.add(url, title)
-    if ENV['ENVIRONMENT'] == 'test'
-      con = PG.connect :dbname => 'bookmark_manager_test'
-    else
-      con = PG.connect :dbname => 'bookmark_manager'
-    end
+    con = Database.connect
     con.exec "INSERT INTO bookmarks (url, title)
     VALUES ('#{url}', '#{title}')";
   end
 
   def self.delete(title)
-    if ENV['ENVIRONMENT'] == 'test'
-      con = PG.connect :dbname => 'bookmark_manager_test'
-    else
-      con = PG.connect :dbname => 'bookmark_manager'
-    end
+    con = Database.connect
     con.exec "DELETE FROM bookmarks
     WHERE title='#{title}'";
   end
